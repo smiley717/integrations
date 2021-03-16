@@ -40,7 +40,15 @@ module.exports = [
       baseDirs: ['pages/', 'src/pages/'],
       filter: ['/_app', '/_document']
     }),
-    shouldScreenshot: route => !route.startsWith('/api/')
+    shouldScreenshot: route => {
+      // do not screenshot api routes
+      if (route.startsWith('/api/')) return false
+
+      // do not screenshot dynamic routes
+      if (/\[/.test(route) && /\]/.test(route)) return false
+
+      return true
+    }
   },
   {
     dependency: 'gatsby',
