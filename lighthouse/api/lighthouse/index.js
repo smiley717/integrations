@@ -78,7 +78,7 @@ const createHandler = ({ gzip, mongo }) => async (req, res) => {
           return { lhError };
         } else {
           console.error(`fatal: ${url}`, err);
-          return;
+          return { lhError: "INTERNAL_SERVER_ERROR" };
         }
       }
     })
