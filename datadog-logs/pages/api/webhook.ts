@@ -35,9 +35,7 @@ export default async function webhook(
 
       const vercel = new VercelClient({ accessToken, teamId })
 
-      const { projectSelection } = await vercel.getConfiguration(
-        configurationId
-      )
+      const { projectSelection } = await vercel.getConfiguration(configurationId)
       const logDrains = await vercel.getLogDrains()
 
       const logDrainForAllProjects = logDrains.find(
@@ -90,10 +88,16 @@ export default async function webhook(
     if (req.body.type === 'integration-configuration-removed') {
       const configurationId = req.body.payload.configuration.id
 
-      await cosmos.deleteDocumentById(
-        Collections.CONFIGURATIONS,
-        configurationId
-      )
+      try {
+        await cosmos.deleteDocumentById(
+          Collections.CONFIGURATIONS,
+          configurationId
+        )
+      } catch (error) {
+        if (error.code !== 'ResourceNotFoundException' || error.code !== 404) {
+          throw error;
+        }
+      }
     }
   }
 
