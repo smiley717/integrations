@@ -5,6 +5,9 @@ import VercelClient from 'lib/vercel-client'
 import verifyWebhookSignature from 'lib/verify-webhook-signature'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Configuration } from 'types'
+import { init } from 'lib/sentry'
+
+init()
 
 export default async function webhook(
   req: NextApiRequest,

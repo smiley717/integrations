@@ -3,6 +3,9 @@ import mapConfiguration from 'lib/map-configuration'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Configuration } from 'types'
 import jwt from 'jsonwebtoken'
+import { init } from 'lib/sentry'
+
+init()
 
 export default async function configurations(
   req: NextApiRequest,

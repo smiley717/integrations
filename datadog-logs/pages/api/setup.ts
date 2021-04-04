@@ -6,6 +6,9 @@ import validateApiKey from 'lib/validate-api-key'
 import VercelClient from 'lib/vercel-client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Configuration } from 'types'
+import { init } from 'lib/sentry'
+
+init()
 
 export default async function setup(req: NextApiRequest, res: NextApiResponse) {
   const { region, apiKey, code } = req.body

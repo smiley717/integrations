@@ -2,6 +2,9 @@ import cookie from 'cookie'
 import jwt from 'jsonwebtoken'
 import exchangeCodeForAccessToken from 'lib/exchange-code-for-access-token'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { init } from 'lib/sentry'
+
+init()
 
 export default async function verify(req: NextApiRequest, res: NextApiResponse) {
   const { code } = req.body
