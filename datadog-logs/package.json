@@ -10,6 +10,10 @@
     "pre-commit": "lint-staged --quiet"
   },
   "dependencies": {
+    "@sentry/browser": "^6.2.5",
+    "@sentry/integrations": "^6.2.5",
+    "@sentry/node": "^6.2.5",
+    "@sentry/webpack-plugin": "^1.14.2",
     "@vercel/cosmosdb": "22.8.0",
     "classnames": "^2.2.6",
     "cookie": "^0.4.1",

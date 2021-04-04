@@ -1,7 +1,9 @@
 import 'styles/index.css'
+import { init } from 'lib/sentry'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+init()
+
+export default function App({ Component, pageProps, err }) {
+  // Workaround for https://github.com/vercel/next.js/issues/8592
+  return <Component {...pageProps} err={err} />
 }
-
-export default MyApp
