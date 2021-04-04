@@ -97,7 +97,7 @@ export default async function webhook(
           configurationId
         )
       } catch (error) {
-        if (error.code !== 'ResourceNotFoundException' || error.code !== 404) {
+        if (error.code !== 'not_found') {
           throw error;
         }
       }
